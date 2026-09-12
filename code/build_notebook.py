@@ -282,9 +282,9 @@ md("""## Wrap-up — the numbers on the poster
 | Largest | **M 7.8** (NNW of Ende, Indonesia) |
 | Significant M≥5.0 | **189** (1.7%) |
 | Gutenberg–Richter b-value | **1.15** (≈ 1.0 expected) |
-| Model (walk-forward CV) | precision **24.8%**, recall **57.3%**, F1 **0.346** |
-| Lift vs 1.5% base rate | **16.8×** |
-| Top-8 future alerts | **4 of 8** verified significant (34× base rate) |
+| Model (walk-forward CV) | precision **19.6%**, recall **78.6%**, F1 **0.314** |
+| Lift vs 1.5% base rate | **13.3×** |
+| Top-8 future alerts | **3 of 8** verified significant (25× base rate) |
 
 **Honest framing for Q&A:** the model does *not* predict individual earthquakes — it
 *triages detected events* and *zones the risk* so responders can act faster.

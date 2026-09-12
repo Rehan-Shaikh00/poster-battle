@@ -26,12 +26,20 @@ alerts_rows = "\n".join(
     f"<td>{a['prob']:.2f}</td><td class='{'hit' if a['actual_sig']=='YES' else 'miss'}'>"
     f"{'✓ M≥5' if a['actual_sig']=='YES' else '–'}</td></tr>"
     for a in m["top_alerts"])
+imp_map = {i["feature"]: i["importance"] for i in mtd["importance"]}
 imp_bars = "\n".join(
     f"<div class='fbar'><span>{lbl}</span>"
     f"<div class='track'><div class='fill' style='width:{v*100:.1f}%;background:{c}'></div></div>"
     f"<b>{v*100:.1f}%</b></div>"
-    for lbl, v, c in [("Location (grid)", 0.735, "#ff8c42"), ("Depth", 0.164, "#4cc9f0"),
-                      ("Hour of day", 0.066, "#ffd166"), ("Day of week", 0.035, "#06d6a0")])
+    for lbl, v, c in [("Location (grid)", imp_map["c_lon"] + imp_map["c_lat"], "#ff8c42"),
+                      ("Depth", imp_map["depth"], "#4cc9f0"),
+                      ("Hour of day", imp_map["hour"], "#ffd166"),
+                      ("Day of week", imp_map["dow"], "#06d6a0")])
+n8 = len(m["top_alerts"])
+hits8 = sum(1 for a in m["top_alerts"] if a["actual_sig"] == "YES")
+hits8_pct = hits8 / n8 * 100
+base_pct = mtd["baseline"] * 100
+hits8_mult = round(hits8_pct / base_pct)
 
 html = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -175,9 +183,10 @@ footer {{ margin-top:30px; color:#5c7490; font-size:12px; text-align:center; }}
   <b style="font-size:15px">The model's top-8 future alerts</b> (held-out test window)
   <table><tr><th>Detected</th><th>Location</th><th>M</th><th>P(sig)</th><th>Verified</th></tr>
   {alerts_rows}</table>
-  <div class="note"><b>4 of 8</b> highest-confidence alerts verified significant (50% vs
-  <b>1.5%</b> base rate — <b>34× better than random</b>). Misses cluster just below M 5.0,
-  where magnitude estimates are least stable. We show the misses on purpose.</div>
+  <div class="note"><b>{hits8} of {n8}</b> highest-confidence alerts verified significant
+  ({hits8_pct:.1f}% vs <b>{base_pct:.1f}%</b> base rate — <b>{hits8_mult}× better than random</b>).
+  Misses cluster just below M 5.0, where magnitude estimates are least stable. We show the
+  misses on purpose.</div>
 </div>
 
 <h2><span class="num">04</span> The Response Platform</h2>
@@ -187,7 +196,7 @@ footer {{ margin-top:30px; color:#5c7490; font-size:12px; text-align:center; }}
   <b style="color:#4cc9f0">ALERT</b> (SMS / app to response teams) →
   <b style="color:#4cc9f0">DISPATCH</b> (pre-positioned resources).<br>
   Only top-confidence, in-risk-zone events page on-call responders — cutting alert noise
-  while catching <b>57%</b> of significant events.<br><br>
+  while catching <b>{mtd['recall']*100:.0f}%</b> of significant events.<br><br>
   <b style="color:#e0e6ed">Honest science:</b> this system does not predict individual
   earthquakes. It answers two different questions — <i>where should we be ready?</i> (risk zones)
   and <i>which detected events deserve immediate attention?</i> (ML triage).

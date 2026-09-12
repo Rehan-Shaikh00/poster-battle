@@ -84,7 +84,7 @@ footer { margin-top:30px; color:#5c7490; font-size:12px; text-align:center; }
     <div class="tl">significant M≥5.0 events<br>(51 above M5.5, 12 above M6.0)</div></div>
   <div class="tile"><div class="tv" style="color:#06d6a0">7</div>
     <div class="tl">tsunamis triggered</div></div>
-  <div class="tile"><div class="tv" style="color:#ff8c42">16.8×</div>
+  <div class="tile"><div class="tv" style="color:#ff8c42">13.3×</div>
     <div class="tl">model lift vs 1.5% base rate</div></div>
 </div>
 
@@ -128,36 +128,37 @@ footer { margin-top:30px; color:#5c7490; font-size:12px; text-align:center; }
   (grid location, depth, hour, day) • <b>walk-forward time-series CV</b> —
   8,912 unseen future events, zero leakage • decision threshold 0.30</div>
   <div class="mt" style="margin-top:14px">
-    <div class="tile"><div class="tv" style="color:#ff8c42">16.8×</div>
+    <div class="tile"><div class="tv" style="color:#ff8c42">13.3×</div>
       <div class="tl">Lift vs baseline</div></div>
-    <div class="tile"><div class="tv" style="color:#4cc9f0">24.8%</div>
+    <div class="tile"><div class="tv" style="color:#4cc9f0">19.6%</div>
       <div class="tl">Precision</div></div>
-    <div class="tile"><div class="tv" style="color:#06d6a0">57.3%</div>
+    <div class="tile"><div class="tv" style="color:#06d6a0">78.6%</div>
       <div class="tl">Recall — caught</div></div>
-    <div class="tile"><div class="tv" style="color:#ffd166">0.346</div>
+    <div class="tile"><div class="tv" style="color:#ffd166">0.314</div>
       <div class="tl">F1 score</div></div>
   </div>
-  <div class='fbar'><span>Location (grid)</span><div class='track'><div class='fill' style='width:73.5%;background:#ff8c42'></div></div><b>73.5%</b></div>
-<div class='fbar'><span>Depth</span><div class='track'><div class='fill' style='width:16.4%;background:#4cc9f0'></div></div><b>16.4%</b></div>
-<div class='fbar'><span>Hour of day</span><div class='track'><div class='fill' style='width:6.6%;background:#ffd166'></div></div><b>6.6%</b></div>
-<div class='fbar'><span>Day of week</span><div class='track'><div class='fill' style='width:3.5%;background:#06d6a0'></div></div><b>3.5%</b></div>
+  <div class='fbar'><span>Location (grid)</span><div class='track'><div class='fill' style='width:75.9%;background:#ff8c42'></div></div><b>75.9%</b></div>
+<div class='fbar'><span>Depth</span><div class='track'><div class='fill' style='width:16.0%;background:#4cc9f0'></div></div><b>16.0%</b></div>
+<div class='fbar'><span>Hour of day</span><div class='track'><div class='fill' style='width:5.3%;background:#ffd166'></div></div><b>5.3%</b></div>
+<div class='fbar'><span>Day of week</span><div class='track'><div class='fill' style='width:2.7%;background:#06d6a0'></div></div><b>2.7%</b></div>
   <div class="note">Signal is almost entirely <b>location + depth</b> — the model independently
   learned the Ring of Fire. Baseline (alert everything): <b>1.5%</b> precision.</div>
 </div>
 <div class="card">
   <b style="font-size:15px">The model's top-8 future alerts</b> (held-out test window)
   <table><tr><th>Detected</th><th>Location</th><th>M</th><th>P(sig)</th><th>Verified</th></tr>
-  <tr><td>03 Sep 21:00</td><td>57 km N of Ende, Indonesia</td><td><b>4.8</b></td><td>0.90</td><td class='miss'>–</td></tr>
-<tr><td>04 Sep 23:17</td><td>38 km NNE of Ruteng, Indonesia</td><td><b>4.5</b></td><td>0.87</td><td class='miss'>–</td></tr>
-<tr><td>24 Aug 10:02</td><td>207 km SSE of Amahai, Indonesia</td><td><b>5.5</b></td><td>0.85</td><td class='hit'>✓ M≥5</td></tr>
-<tr><td>22 Aug 22:01</td><td>62 km NNE of Ruteng, Indonesia</td><td><b>4.5</b></td><td>0.82</td><td class='miss'>–</td></tr>
-<tr><td>10 Sep 18:44</td><td>83 km E of Lospalos, Timor Leste</td><td><b>5.3</b></td><td>0.81</td><td class='hit'>✓ M≥5</td></tr>
-<tr><td>27 Aug 10:33</td><td>54 km NNE of Labuan Bajo, Indonesia</td><td><b>5.3</b></td><td>0.78</td><td class='hit'>✓ M≥5</td></tr>
-<tr><td>27 Aug 18:43</td><td>5 km NW of Culaman, Philippines</td><td><b>4.9</b></td><td>0.78</td><td class='miss'>–</td></tr>
-<tr><td>12 Sep 00:55</td><td>South Sandwich Islands region</td><td><b>5.1</b></td><td>0.77</td><td class='hit'>✓ M≥5</td></tr></table>
-  <div class="note"><b>4 of 8</b> highest-confidence alerts verified significant (50% vs
-  <b>1.5%</b> base rate — <b>34× better than random</b>). Misses cluster just below M 5.0,
-  where magnitude estimates are least stable. We show the misses on purpose.</div>
+  <tr><td>03 Sep 21:00</td><td>57 km N of Ende, Indonesia</td><td><b>4.8</b></td><td>0.97</td><td class='miss'>–</td></tr>
+<tr><td>03 Sep 11:39</td><td>21 km WNW of Jiangyou, China</td><td><b>5.4</b></td><td>0.95</td><td class='hit'>✓ M≥5</td></tr>
+<tr><td>04 Sep 06:45</td><td>South Sandwich Islands region</td><td><b>5.0</b></td><td>0.95</td><td class='hit'>✓ M≥5</td></tr>
+<tr><td>12 Sep 00:55</td><td>South Sandwich Islands region</td><td><b>5.1</b></td><td>0.94</td><td class='hit'>✓ M≥5</td></tr>
+<tr><td>22 Aug 22:01</td><td>62 km NNE of Ruteng, Indonesia</td><td><b>4.5</b></td><td>0.94</td><td class='miss'>–</td></tr>
+<tr><td>04 Sep 23:17</td><td>38 km NNE of Ruteng, Indonesia</td><td><b>4.5</b></td><td>0.94</td><td class='miss'>–</td></tr>
+<tr><td>09 Sep 20:21</td><td>164 km SSE of Isangel, Vanuatu</td><td><b>4.7</b></td><td>0.94</td><td class='miss'>–</td></tr>
+<tr><td>30 Aug 21:16</td><td>190 km NNW of Sola, Vanuatu</td><td><b>4.8</b></td><td>0.94</td><td class='miss'>–</td></tr></table>
+  <div class="note"><b>3 of 8</b> highest-confidence alerts verified significant
+  (37.5% vs <b>1.5%</b> base rate — <b>26× better than random</b>).
+  Misses cluster just below M 5.0, where magnitude estimates are least stable. We show the
+  misses on purpose.</div>
 </div>
 
 <h2><span class="num">04</span> The Response Platform</h2>
@@ -167,7 +168,7 @@ footer { margin-top:30px; color:#5c7490; font-size:12px; text-align:center; }
   <b style="color:#4cc9f0">ALERT</b> (SMS / app to response teams) →
   <b style="color:#4cc9f0">DISPATCH</b> (pre-positioned resources).<br>
   Only top-confidence, in-risk-zone events page on-call responders — cutting alert noise
-  while catching <b>57%</b> of significant events.<br><br>
+  while catching <b>79%</b> of significant events.<br><br>
   <b style="color:#e0e6ed">Honest science:</b> this system does not predict individual
   earthquakes. It answers two different questions — <i>where should we be ready?</i> (risk zones)
   and <i>which detected events deserve immediate attention?</i> (ML triage).
@@ -185,8 +186,8 @@ footer { margin-top:30px; color:#5c7490; font-size:12px; text-align:center; }
     <span><b>Deep quakes (&gt;300 km) average M 4.5 vs M 1.6 shallow</b> — only large deep
     events are detectable</span></div>
   <div class="chip"><div class="dot" style="background:#06d6a0"></div>
-    <span><b>16.8× lift</b> — flagged events are ~17× more likely to be
-    significant; 57% of future significant events caught</span></div>
+    <span><b>13.3× lift</b> — flagged events are ~13× more likely to be
+    significant; 79% of future significant events caught</span></div>
 </div>
 
 <div class="team">

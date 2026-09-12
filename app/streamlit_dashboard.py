@@ -281,22 +281,22 @@ with tab3:
                 f"is **{model['lift']:.0f}× better than random**.")
     st.markdown("**Feature importance** (full-data model):")
     full = pd.DataFrame({"feature": ["Location (grid)", "Depth", "Hour of day", "Day of week"],
-                         "importance": [0.735, 0.164, 0.066, 0.035]})
+                         "importance": [0.759, 0.160, 0.053, 0.027]})
     st.bar_chart(full.set_index("feature")["importance"], color=C_ORANGE, height=220)
     st.caption("Location + depth carry ~90% of the signal — the model independently learned "
                "the Ring of Fire.")
     st.markdown("**The model's top-8 future alerts (held-out test window):**")
     st.markdown(
         "| Detected | Location | M | P(sig) | Verified M≥5.0 |\n|---|---|---|---|---|\n"
-        "| 03 Sep | Ende, Indonesia | 4.8 | 0.90 | – |\n"
-        "| 04 Sep | Ruteng, Indonesia | 4.5 | 0.87 | – |\n"
-        "| 24 Aug | Amahai, Indonesia | 5.5 | 0.85 | ✅ |\n"
-        "| 22 Aug | Ruteng, Indonesia | 4.5 | 0.82 | – |\n"
-        "| 10 Sep | Lospalos, Timor Leste | 5.3 | 0.81 | ✅ |\n"
-        "| 27 Aug | Labuan Bajo, Indonesia | 5.3 | 0.78 | ✅ |\n"
-        "| 27 Aug | Culaman, Philippines | 4.9 | 0.78 | – |\n"
-        "| 12 Sep | South Sandwich Is. | 5.1 | 0.77 | ✅ |")
-    st.markdown("**4 of 8** top-confidence alerts verified significant (50% vs 1.5% base rate).")
+        "| 03 Sep | Ende, Indonesia | 4.8 | 0.97 | – |\n"
+        "| 03 Sep | Jiangyou, China | 5.4 | 0.95 | ✅ |\n"
+        "| 04 Sep | South Sandwich Is. | 5.0 | 0.95 | ✅ |\n"
+        "| 12 Sep | South Sandwich Is. | 5.1 | 0.94 | ✅ |\n"
+        "| 22 Aug | Ruteng, Indonesia | 4.5 | 0.94 | – |\n"
+        "| 04 Sep | Ruteng, Indonesia | 4.5 | 0.94 | – |\n"
+        "| 09 Sep | Isangel, Vanuatu | 4.7 | 0.94 | – |\n"
+        "| 30 Aug | Sola, Vanuatu | 4.8 | 0.94 | – |")
+    st.markdown("**3 of 8** top-confidence alerts verified significant (37.5% vs 1.5% base rate — 25× better than random).")
 
 # ---------------- About tab ----------------
 with tab4:

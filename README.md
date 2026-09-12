@@ -69,8 +69,10 @@ This is your bulletproof fallback for event day.
   (probability of being significant, M ≥ 5.0) and flags zones for pre-positioning.
 - Evaluation is **walk-forward time-series CV** (8,912 unseen future events,
   4 sequential hold-out windows) — no leakage, no random splits.
-- Headline numbers: precision 24.8%, recall 57.3%, F1 0.346, **16.8× lift**
-  over the 1.5% base rate; top-8 future alerts: 4/8 verified significant.
+- Headline numbers (verified with scikit-learn 1.9.1): precision 19.6%, recall 78.6%,
+  F1 0.314, **13.3× lift** over the 1.5% base rate; top-8 future alerts: 3/8 verified.
+  Note: model metrics vary slightly across scikit-learn versions — requirements.txt
+  pins scikit-learn>=1.9, which reproduces these numbers exactly.
 - Deep-quake magnitude effect is flagged as **detection bias**, not a discovery.
 - Windows note: all file reads use `encoding="utf-8"` — required on Windows
   (cp1252 default chokes on non-ASCII USGS place names like "Gjøvik, Norway").

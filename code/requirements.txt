@@ -1,7 +1,7 @@
 pandas
 numpy
 matplotlib
-scikit-learn
+scikit-learn>=1.9    # 1.9.x reproduces the poster numbers exactly (verified)
 requests
 # optional extras
 # plotly        -> interactive map (output/interactive_map.html)

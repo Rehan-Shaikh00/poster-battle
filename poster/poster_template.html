@@ -230,19 +230,19 @@ tr:last-child td { border-bottom: none; }
         <div class="ct"><span class="num">07</span> ML Risk Model</div>
         <div class="sub">Random Forest • features known at detection: location, depth, hour, day • walk-forward CV on 8,912 unseen future events • zero leakage • threshold 0.30</div>
         <div class="mtiles">
-          <div class="tile"><div class="mv" style="color:#ff8c42">16.8×</div><div class="ml">Lift vs baseline</div></div>
-          <div class="tile"><div class="mv" style="color:#4cc9f0">24.8%</div><div class="ml">Precision</div></div>
-          <div class="tile"><div class="mv" style="color:#06d6a0">57.3%</div><div class="ml">Recall</div></div>
-          <div class="tile"><div class="mv" style="color:#ffd166">0.346</div><div class="ml">F1 score</div></div>
+          <div class="tile"><div class="mv" style="color:#ff8c42">13.3×</div><div class="ml">Lift vs baseline</div></div>
+          <div class="tile"><div class="mv" style="color:#4cc9f0">19.6%</div><div class="ml">Precision</div></div>
+          <div class="tile"><div class="mv" style="color:#06d6a0">78.6%</div><div class="ml">Recall</div></div>
+          <div class="tile"><div class="mv" style="color:#ffd166">0.314</div><div class="ml">F1 score</div></div>
         </div>
         <div class="fbar"><span>Location (grid)</span>
-          <div class="track"><div class="fill" style="width:73.5%;background:#ff8c42"></div></div><b>73.5%</b></div>
+          <div class="track"><div class="fill" style="width:75.9%;background:#ff8c42"></div></div><b>75.9%</b></div>
         <div class="fbar"><span>Depth</span>
-          <div class="track"><div class="fill" style="width:16.4%;background:#4cc9f0"></div></div><b>16.4%</b></div>
+          <div class="track"><div class="fill" style="width:16.0%;background:#4cc9f0"></div></div><b>16.0%</b></div>
         <div class="fbar"><span>Hour of day</span>
-          <div class="track"><div class="fill" style="width:6.6%;background:#ffd166"></div></div><b>6.6%</b></div>
+          <div class="track"><div class="fill" style="width:5.3%;background:#ffd166"></div></div><b>5.3%</b></div>
         <div class="fbar" style="margin-bottom:0"><span>Day of week</span>
-          <div class="track"><div class="fill" style="width:3.5%;background:#06d6a0"></div></div><b>3.5%</b></div>
+          <div class="track"><div class="fill" style="width:2.7%;background:#06d6a0"></div></div><b>2.7%</b></div>
         <div class="cap" style="margin-top:1.2mm">Baseline (alert everything): <b>1.5%</b> precision — the signal is almost entirely
         <b>location + depth</b>: the model learned the Ring of Fire on its own.</div>
       </div>
@@ -251,17 +251,17 @@ tr:last-child td { border-bottom: none; }
         <div class="ct"><span class="num">08</span> Model's Top-8 Future Alerts</div>
         <table>
           <tr><th>Detected</th><th>Location</th><th>M</th><th>P(sig)</th><th>Hit</th></tr>
-          <tr><td>03 Sep</td><td>Ende, Indonesia</td><td class="mv2">4.8</td><td>0.90</td><td class="miss">–</td></tr>
-          <tr><td>04 Sep</td><td>Ruteng, Indonesia</td><td class="mv2">4.5</td><td>0.87</td><td class="miss">–</td></tr>
-          <tr><td>24 Aug</td><td>Amahai, Indonesia</td><td class="mv2">5.5</td><td>0.85</td><td class="hit">✓ M≥5</td></tr>
-          <tr><td>22 Aug</td><td>Ruteng, Indonesia</td><td class="mv2">4.5</td><td>0.82</td><td class="miss">–</td></tr>
-          <tr><td>10 Sep</td><td>Lospalos, Timor Leste</td><td class="mv2">5.3</td><td>0.81</td><td class="hit">✓ M≥5</td></tr>
-          <tr><td>27 Aug</td><td>Labuan Bajo, Indonesia</td><td class="mv2">5.3</td><td>0.78</td><td class="hit">✓ M≥5</td></tr>
-          <tr><td>27 Aug</td><td>Culaman, Philippines</td><td class="mv2">4.9</td><td>0.78</td><td class="miss">–</td></tr>
-          <tr><td>12 Sep</td><td>South Sandwich Is.</td><td class="mv2">5.1</td><td>0.77</td><td class="hit">✓ M≥5</td></tr>
+          <tr><td>03 Sep</td><td>Ende, Indonesia</td><td class="mv2">4.8</td><td>0.97</td><td class="miss">–</td></tr>
+          <tr><td>03 Sep</td><td>Jiangyou, China</td><td class="mv2">5.4</td><td>0.95</td><td class="hit">✓ M≥5</td></tr>
+          <tr><td>04 Sep</td><td>South Sandwich Is.</td><td class="mv2">5.0</td><td>0.95</td><td class="hit">✓ M≥5</td></tr>
+          <tr><td>12 Sep</td><td>South Sandwich Is.</td><td class="mv2">5.1</td><td>0.94</td><td class="hit">✓ M≥5</td></tr>
+          <tr><td>22 Aug</td><td>Ruteng, Indonesia</td><td class="mv2">4.5</td><td>0.94</td><td class="miss">–</td></tr>
+          <tr><td>04 Sep</td><td>Ruteng, Indonesia</td><td class="mv2">4.5</td><td>0.94</td><td class="miss">–</td></tr>
+          <tr><td>09 Sep</td><td>Isangel, Vanuatu</td><td class="mv2">4.7</td><td>0.94</td><td class="miss">–</td></tr>
+          <tr><td>30 Aug</td><td>Sola, Vanuatu</td><td class="mv2">4.8</td><td>0.94</td><td class="miss">–</td></tr>
         </table>
-        <div class="cap"><b>4 of 8</b> top-confidence alerts verified significant (50% vs <b>1.5%</b> base rate) —
-        <b>34× better than random</b>; misses cluster just below M 5.0.</div>
+        <div class="cap"><b>3 of 8</b> top-confidence alerts verified significant (37.5% vs <b>1.5%</b> base rate) —
+        <b>25× better than random</b>; misses cluster just below M 5.0.</div>
       </div>
 
       <div class="card">
@@ -277,7 +277,7 @@ tr:last-child td { border-bottom: none; }
           <div class="farr">▸</div>
           <div class="fbox"><div class="ft">DISPATCH</div><div class="fd">pre-positioned aid</div></div>
         </div>
-        <div class="cap">Only top-confidence, in-risk-zone events page responders — less alert noise, 57% catch rate.</div>
+        <div class="cap">Only top-confidence, in-risk-zone events page responders — less alert noise, 79% catch rate.</div>
       </div>
     </div>
   </div>
@@ -292,7 +292,7 @@ tr:last-child td { border-bottom: none; }
       <div class="chip"><div class="dot" style="background:#ffd166"></div>
         <span><b>Deep quakes (&gt;300 km) average M 4.5 vs M 1.6 shallow</b> — only large deep events are detectable</span></div>
       <div class="chip"><div class="dot" style="background:#06d6a0"></div>
-        <span><b>16.8× lift</b> — flagged events are ~17× more likely to be significant; 57% of future significant events caught</span></div>
+        <span><b>13.3× lift</b> — flagged events are ~13× more likely to be significant; 79% of future significant events caught</span></div>
     </div>
     <div class="team">
       <div class="tn">REHAN SHAIKH • AMAN ANSARI • KAMIL MIRZA</div>
