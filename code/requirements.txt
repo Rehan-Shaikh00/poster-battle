@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+requests
+# optional extras
+# plotly        -> interactive map (output/interactive_map.html)
+# weasyprint    -> poster PDF build (poster/build_poster.py)
+# pypdfium2     -> poster preview PNG (poster/build_poster.py)

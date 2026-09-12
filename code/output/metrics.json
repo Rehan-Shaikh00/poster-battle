@@ -1,0 +1,215 @@
+{
+  "n_total": 11144,
+  "n_used": 11143,
+  "date_min": "13 Aug 2026",
+  "date_max": "12 Sep 2026",
+  "max_mag": 7.8,
+  "max_ev": "64 km NNW of Ende, Indonesia",
+  "n_ge55": 51,
+  "n_ge60": 12,
+  "n_tsum": 7,
+  "b_value": 1.15,
+  "top_regions": [
+    {
+      "region": "Alaska",
+      "events": 3161
+    },
+    {
+      "region": "Utah",
+      "events": 745
+    },
+    {
+      "region": "Texas",
+      "events": 635
+    },
+    {
+      "region": "Hawaii",
+      "events": 454
+    },
+    {
+      "region": "Indonesia",
+      "events": 414
+    },
+    {
+      "region": "Washington",
+      "events": 305
+    }
+  ],
+  "depth_tab": [
+    {
+      "band": "Shallow (<70 km)",
+      "events": 9963,
+      "mean_mag": 1.62,
+      "max_mag": 7.8
+    },
+    {
+      "band": "Intermediate (70-300 km)",
+      "events": 736,
+      "mean_mag": 2.8,
+      "max_mag": 6.9
+    },
+    {
+      "band": "Deep (>300 km)",
+      "events": 56,
+      "mean_mag": 4.54,
+      "max_mag": 6.6
+    }
+  ],
+  "significant_threshold": 5.0,
+  "threshold": 0.3,
+  "model": {
+    "test_n": 8912,
+    "test_pos": 131,
+    "baseline": 0.0147,
+    "precision": 0.248,
+    "recall": 0.573,
+    "f1": 0.346,
+    "lift": 16.8,
+    "importance": [
+      {
+        "feature": "c_lon",
+        "importance": 0.426
+      },
+      {
+        "feature": "c_lat",
+        "importance": 0.309
+      },
+      {
+        "feature": "depth",
+        "importance": 0.164
+      },
+      {
+        "feature": "hour",
+        "importance": 0.066
+      },
+      {
+        "feature": "dow",
+        "importance": 0.035
+      }
+    ]
+  },
+  "risk_zones": [
+    {
+      "zone": "Timor Leste",
+      "lat": "10 to 15 S",
+      "lon": "125 deg",
+      "events": 16,
+      "significant": 5,
+      "p_posterior": 0.312
+    },
+    {
+      "zone": "Philippines",
+      "lat": "5 to 10 N",
+      "lon": "125 deg",
+      "events": 26,
+      "significant": 6,
+      "p_posterior": 0.231
+    },
+    {
+      "zone": "Indonesia",
+      "lat": "10 to 15 S",
+      "lon": "120 deg",
+      "events": 333,
+      "significant": 54,
+      "p_posterior": 0.162
+    },
+    {
+      "zone": "Mexico",
+      "lat": "10 to 15 N",
+      "lon": "-95 deg",
+      "events": 27,
+      "significant": 4,
+      "p_posterior": 0.148
+    },
+    {
+      "zone": "Indonesia",
+      "lat": "0 to 5 N",
+      "lon": "125 deg",
+      "events": 15,
+      "significant": 2,
+      "p_posterior": 0.133
+    },
+    {
+      "zone": "Russia",
+      "lat": "50 to 55 N",
+      "lon": "155 deg",
+      "events": 15,
+      "significant": 2,
+      "p_posterior": 0.133
+    }
+  ],
+  "top_alerts": [
+    {
+      "time": "03 Sep 21:00",
+      "place": "57 km N of Ende, Indonesia",
+      "mag": 4.8,
+      "depth": 10.0,
+      "prob": 0.9006198869084123,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "04 Sep 23:17",
+      "place": "38 km NNE of Ruteng, Indonesia",
+      "mag": 4.5,
+      "depth": 10.0,
+      "prob": 0.8678486171752542,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "24 Aug 10:02",
+      "place": "207 km SSE of Amahai, Indonesia",
+      "mag": 5.5,
+      "depth": 10.0,
+      "prob": 0.8478430393478573,
+      "flag": "ALERT",
+      "actual_sig": "YES"
+    },
+    {
+      "time": "22 Aug 22:01",
+      "place": "62 km NNE of Ruteng, Indonesia",
+      "mag": 4.5,
+      "depth": 10.0,
+      "prob": 0.8186831655679421,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "10 Sep 18:44",
+      "place": "83 km E of Lospalos, Timor Leste",
+      "mag": 5.3,
+      "depth": 10.0,
+      "prob": 0.805933089987436,
+      "flag": "ALERT",
+      "actual_sig": "YES"
+    },
+    {
+      "time": "27 Aug 10:33",
+      "place": "54 km NNE of Labuan Bajo, Indonesia",
+      "mag": 5.3,
+      "depth": 10.0,
+      "prob": 0.7782746716871082,
+      "flag": "ALERT",
+      "actual_sig": "YES"
+    },
+    {
+      "time": "27 Aug 18:43",
+      "place": "5 km NW of Culaman, Philippines",
+      "mag": 4.9,
+      "depth": 10.0,
+      "prob": 0.7767596238249194,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "12 Sep 00:55",
+      "place": "South Sandwich Islands region",
+      "mag": 5.1,
+      "depth": 10.0,
+      "prob": 0.7738661618676833,
+      "flag": "ALERT",
+      "actual_sig": "YES"
+    }
+  ]
+}
