@@ -14,39 +14,54 @@ poster-battle/
 ├── poster/
 │   ├── poster.html             ← THE digital poster (self-contained; opens offline)
 │   ├── poster.pdf              ← print-ready A4 landscape (same content)
-│   ├── poster_preview.png      ← quick visual check
-│   ├── poster_template.html    ← editable source (add team names here)
+│   ├── poster_template.html    ← editable source (names are in here)
 │   └── build_poster.py         ← rebuild HTML/PDF after edits
+├── dashboard.html              ← ⭐ SINGLE-FILE dashboard: double-click to open,
+│                                 zero setup, works offline (the safest event-day demo)
+├── build_dashboard.py          ← rebuilds dashboard.html from code/output/
+├── app/
+│   └── streamlit_dashboard.py  ← ⭐ INTERACTIVE live app (filters, hover, live map)
 ├── code/
-│   ├── disaster_analysis.py    ← the analysis: downloads live data, EDA,
+│   ├── disaster_analysis.py    ← the core analysis: live USGS data, EDA,
 │   │                             risk zones, walk-forward CV ML model, charts
+│   ├── TREMORWATCH_notebook.ipynb ← ⭐ Jupyter notebook: the full analysis cell by
+│   │                                 cell, pre-run with outputs (shows the work)
+│   ├── build_notebook.py       ← regenerate the notebook
 │   ├── requirements.txt
-│   └── output/
-│       ├── *.png               ← all charts (dark theme, poster-ready)
-│       ├── metrics.json        ← every number used in the poster
-│       └── interactive_map.html← bonus live dashboard for the laptop demo
+│   └── output/                 ← all charts, metrics.json, interactive_map.html
 └── presentation/
     └── script_and_qa.md        ← 10-min time-coded script + 18 Q&A answers
                                   + numbers cheat-sheet + day-of checklist
 ```
 
-## Run it yourself (takes ~2 min)
+## Run it (three ways)
 
+### 1) The core analysis script
 ```bash
 cd code
 pip install -r requirements.txt        # pandas numpy matplotlib scikit-learn requests
-python disaster_analysis.py            # downloads live USGS data, trains model,
-                                       # prints poster-ready summary, saves charts
+python disaster_analysis.py            # ~2 min: downloads/reuses live USGS data,
+                                       # trains model, prints poster-ready summary
 ```
+Works **offline** thanks to the cached `.geojson` files (exact poster numbers).
 
-Everything is reproducible from public data — no API keys, no synthetic data.
-If you re-run on the day of the event, the numbers update to the latest 30-day
-window (the cached `.geojson` files make it also run fully offline).
+### 2) Interactive Streamlit dashboard (the "wow" live demo)
+```bash
+pip install streamlit pandas numpy matplotlib scikit-learn requests plotly
+cd app
+streamlit run streamlit_dashboard.py   # opens in your browser automatically
+```
+Sidebar filters (min magnitude, depth band, map view), live world map with hover
+details, risk-zone map with tooltips, EDA charts, model metrics + top-8 alerts.
 
-## Edit the poster (e.g., add your names)
+### 3) Jupyter notebook (show the work in Q&A)
+Open `code/TREMORWATCH_notebook.ipynb` in **VS Code** (just press "Run All") or
+with `pip install notebook` → `jupyter notebook`. It comes **pre-run** — every cell
+shows its chart/number — and re-running it regenerates everything from live data.
 
-1. Open `poster/poster_template.html` → replace `[Name 1] • [Name 2] • [Name 3]`.
-2. `python poster/build_poster.py` → regenerates `poster.html` + `poster.pdf`.
+### 4) Single-file dashboard (no Python at all)
+Double-click **`dashboard.html`** — opens in any browser, fully offline.
+This is your bulletproof fallback for event day.
 
 ## Honest-science notes (know these before Q&A)
 
@@ -57,3 +72,5 @@ window (the cached `.geojson` files make it also run fully offline).
 - Headline numbers: precision 24.8%, recall 57.3%, F1 0.346, **16.8× lift**
   over the 1.5% base rate; top-8 future alerts: 4/8 verified significant.
 - Deep-quake magnitude effect is flagged as **detection bias**, not a discovery.
+- Windows note: all file reads use `encoding="utf-8"` — required on Windows
+  (cp1252 default chokes on non-ASCII USGS place names like "Gjøvik, Norway").
