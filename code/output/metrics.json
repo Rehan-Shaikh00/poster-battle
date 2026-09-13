@@ -153,7 +153,7 @@
       "place": "21 km WNW of Jiangyou, China",
       "mag": 5.4,
       "depth": 10.0,
-      "prob": 0.9503873678693369,
+      "prob": 0.9503873678693371,
       "flag": "ALERT",
       "actual_sig": "YES"
     },
@@ -171,7 +171,7 @@
       "place": "South Sandwich Islands region",
       "mag": 5.1,
       "depth": 10.0,
-      "prob": 0.9425674222259461,
+      "prob": 0.9425674222259459,
       "flag": "ALERT",
       "actual_sig": "YES"
     },
@@ -189,7 +189,7 @@
       "place": "38 km NNE of Ruteng, Indonesia",
       "mag": 4.5,
       "depth": 10.0,
-      "prob": 0.9375148990939969,
+      "prob": 0.9375148990939967,
       "flag": "ALERT",
       "actual_sig": "no"
     },
@@ -198,7 +198,7 @@
       "place": "164 km SSE of Isangel, Vanuatu",
       "mag": 4.7,
       "depth": 104.703,
-      "prob": 0.9366075444431149,
+      "prob": 0.936607544443115,
       "flag": "ALERT",
       "actual_sig": "no"
     },
@@ -207,7 +207,7 @@
       "place": "190 km NNW of Sola, Vanuatu",
       "mag": 4.8,
       "depth": 10.0,
-      "prob": 0.9357818427396765,
+      "prob": 0.9357818427396758,
       "flag": "ALERT",
       "actual_sig": "no"
     }
