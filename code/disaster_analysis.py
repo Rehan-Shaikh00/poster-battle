@@ -89,7 +89,7 @@ def region_label(place_series):
 # 1.  Load + parse the live USGS feed
 # ----------------------------------------------------------------------------
 print("[1/6] Loading live USGS earthquake feed (last 30 days, worldwide) ...")
-gj = json.load(open(fetch(FEED, "usgs_all_month.geojson")))
+gj = json.load(open(fetch(FEED, "usgs_all_month.geojson"), encoding="utf-8"))
 rows = []
 for f in gj["features"]:
     p, g = f["properties"], f["geometry"]["coordinates"]   # g = [lon, lat, depth]
@@ -145,7 +145,7 @@ print("[2/6] Rendering charts ...")
 
 # --- (a) world map of all epicenters ----------------------------------------
 fig, ax = plt.subplots(figsize=(12, 5.6))
-w = json.load(open(fetch(WORLD, "world_110m.geojson")))
+w = json.load(open(fetch(WORLD, "world_110m.geojson"), encoding="utf-8"))
 for feat in w["features"]:
     gm = feat["geometry"]
     polys = gm["coordinates"] if gm["type"] == "MultiPolygon" else [gm["coordinates"]]
@@ -333,7 +333,7 @@ metrics = dict(
                importance=imp_df),
     risk_zones=risk_rows, top_alerts=tst_out,
 )
-with open(os.path.join(OUT, "metrics.json"), "w") as f:
+with open(os.path.join(OUT, "metrics.json"), "w", encoding="utf-8") as f:
     json.dump(metrics, f, indent=2, default=str)
 print("[5/6] metrics.json saved.")
 

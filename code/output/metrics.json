@@ -61,30 +61,30 @@
     "test_n": 8912,
     "test_pos": 131,
     "baseline": 0.0147,
-    "precision": 0.248,
-    "recall": 0.573,
-    "f1": 0.346,
-    "lift": 16.8,
+    "precision": 0.196,
+    "recall": 0.786,
+    "f1": 0.314,
+    "lift": 13.3,
     "importance": [
       {
         "feature": "c_lon",
-        "importance": 0.426
+        "importance": 0.451
       },
       {
         "feature": "c_lat",
-        "importance": 0.309
+        "importance": 0.308
       },
       {
         "feature": "depth",
-        "importance": 0.164
+        "importance": 0.16
       },
       {
         "feature": "hour",
-        "importance": 0.066
+        "importance": 0.053
       },
       {
         "feature": "dow",
-        "importance": 0.035
+        "importance": 0.027
       }
     ]
   },
@@ -144,25 +144,34 @@
       "place": "57 km N of Ende, Indonesia",
       "mag": 4.8,
       "depth": 10.0,
-      "prob": 0.9006198869084123,
+      "prob": 0.9678624096792405,
       "flag": "ALERT",
       "actual_sig": "no"
     },
     {
-      "time": "04 Sep 23:17",
-      "place": "38 km NNE of Ruteng, Indonesia",
-      "mag": 4.5,
+      "time": "03 Sep 11:39",
+      "place": "21 km WNW of Jiangyou, China",
+      "mag": 5.4,
       "depth": 10.0,
-      "prob": 0.8678486171752542,
+      "prob": 0.9503873678693369,
       "flag": "ALERT",
-      "actual_sig": "no"
+      "actual_sig": "YES"
     },
     {
-      "time": "24 Aug 10:02",
-      "place": "207 km SSE of Amahai, Indonesia",
-      "mag": 5.5,
+      "time": "04 Sep 06:45",
+      "place": "South Sandwich Islands region",
+      "mag": 5.0,
       "depth": 10.0,
-      "prob": 0.8478430393478573,
+      "prob": 0.9460111983569645,
+      "flag": "ALERT",
+      "actual_sig": "YES"
+    },
+    {
+      "time": "12 Sep 00:55",
+      "place": "South Sandwich Islands region",
+      "mag": 5.1,
+      "depth": 10.0,
+      "prob": 0.9425674222259461,
       "flag": "ALERT",
       "actual_sig": "YES"
     },
@@ -171,45 +180,36 @@
       "place": "62 km NNE of Ruteng, Indonesia",
       "mag": 4.5,
       "depth": 10.0,
-      "prob": 0.8186831655679421,
+      "prob": 0.9390750735479674,
       "flag": "ALERT",
       "actual_sig": "no"
     },
     {
-      "time": "10 Sep 18:44",
-      "place": "83 km E of Lospalos, Timor Leste",
-      "mag": 5.3,
+      "time": "04 Sep 23:17",
+      "place": "38 km NNE of Ruteng, Indonesia",
+      "mag": 4.5,
       "depth": 10.0,
-      "prob": 0.805933089987436,
-      "flag": "ALERT",
-      "actual_sig": "YES"
-    },
-    {
-      "time": "27 Aug 10:33",
-      "place": "54 km NNE of Labuan Bajo, Indonesia",
-      "mag": 5.3,
-      "depth": 10.0,
-      "prob": 0.7782746716871082,
-      "flag": "ALERT",
-      "actual_sig": "YES"
-    },
-    {
-      "time": "27 Aug 18:43",
-      "place": "5 km NW of Culaman, Philippines",
-      "mag": 4.9,
-      "depth": 10.0,
-      "prob": 0.7767596238249194,
+      "prob": 0.9375148990939969,
       "flag": "ALERT",
       "actual_sig": "no"
     },
     {
-      "time": "12 Sep 00:55",
-      "place": "South Sandwich Islands region",
-      "mag": 5.1,
-      "depth": 10.0,
-      "prob": 0.7738661618676833,
+      "time": "09 Sep 20:21",
+      "place": "164 km SSE of Isangel, Vanuatu",
+      "mag": 4.7,
+      "depth": 104.703,
+      "prob": 0.9366075444431149,
       "flag": "ALERT",
-      "actual_sig": "YES"
+      "actual_sig": "no"
+    },
+    {
+      "time": "30 Aug 21:16",
+      "place": "190 km NNW of Sola, Vanuatu",
+      "mag": 4.8,
+      "depth": 10.0,
+      "prob": 0.9357818427396765,
+      "flag": "ALERT",
+      "actual_sig": "no"
     }
   ]
 }
