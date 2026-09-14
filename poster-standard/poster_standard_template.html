@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TREMORWATCH — Standard Layout Poster</title>
+<style>
+@page { size: 240mm 320mm; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "DejaVu Sans", "Segoe UI", Arial, sans-serif; background: #fff; }
+
+.poster { width: 240mm; height: 320mm; background: #ffffff; color: #1d3557;
+  padding: 7mm 9mm 6mm 9mm; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ---------- title band ---------- */
+.band { background: #0b2545; border-radius: 2.2mm; color: #fff;
+  text-align: center; padding: 4.6mm 8mm 4.2mm 8mm; margin-bottom: 4mm; }
+.band .kicker { font-size: 6.8pt; letter-spacing: 2.1px; color: #9db2c8;
+  text-transform: uppercase; margin-bottom: 1.4mm; }
+.band h1 { font-size: 24pt; font-weight: 800; letter-spacing: 2px; line-height: 1.05; }
+.band h1 span { color: #ff8c42; }
+.band .subtitle { font-size: 9.4pt; color: #dbe4ee; margin-top: 1.8mm; line-height: 1.3; }
+.band .meta { font-size: 6.9pt; color: #9db2c8; letter-spacing: 0.8px;
+  margin-top: 2.2mm; text-transform: uppercase; }
+.band .team { font-size: 8pt; color: #ffd166; margin-top: 1mm; font-weight: 700;
+  letter-spacing: 0.6px; }
+
+/* ---------- grid ---------- */
+.grid { flex: 1; display: grid; gap: 4mm; min-height: 0;
+  grid-template-columns: 1.02fr 1.18fr 1fr;
+  grid-template-rows: 1fr 0.97fr 1.26fr; }
+.sec { border: 0.35mm solid #d9e2ec; border-radius: 1.8mm; padding: 3mm 3.6mm 2.8mm 3.6mm;
+  background: #fff; display: flex; flex-direction: column; min-height: 0; }
+.sec h2 { font-size: 10pt; font-weight: 800; color: #0b2545; text-transform: uppercase;
+  letter-spacing: 1.1px; display: flex; align-items: center; gap: 1.8mm; margin-bottom: 1.8mm; }
+.sec h2::before { content: ""; width: 2.3mm; height: 2.3mm; background: #ff8c42;
+  border-radius: 0.5mm; flex: 0 0 auto; }
+p { font-size: 7.8pt; line-height: 1.4; color: #33475b; }
+ul { list-style: none; }
+li { font-size: 7.8pt; line-height: 1.38; color: #33475b; padding-left: 3.4mm;
+  position: relative; margin-bottom: 1.3mm; }
+li::before { content: ""; position: absolute; left: 0; top: 1.6mm; width: 1.5mm;
+  height: 1.5mm; border-radius: 50%; background: #219ebc; }
+li b { color: #0b2545; }
+img { display: block; width: 100%; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2mm; margin-top: 1.2mm; }
+
+/* stat chips */
+.chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm; margin-bottom: 1.6mm; }
+.chip { background: #f4f7fa; border: 0.25mm solid #d9e2ec; border-radius: 1.4mm;
+  padding: 1.3mm 1.5mm; }
+.chip .v { font-size: 10.5pt; font-weight: 800; color: #0b2545; line-height: 1.1; }
+.chip .l { font-size: 5.6pt; color: #5b7083; margin-top: 0.4mm; line-height: 1.22; }
+
+/* metric strip */
+.mstrip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm; margin-top: 1.6mm; }
+.mt { background: #0b2545; border-radius: 1.4mm; padding: 1.3mm 1.2mm; text-align: center; }
+.mt .v { font-size: 11pt; font-weight: 800; color: #ffd166; line-height: 1.1; }
+.mt .l { font-size: 5.3pt; color: #9db2c8; text-transform: uppercase; letter-spacing: 0.5px;
+  margin-top: 0.4mm; }
+.note { font-size: 6.9pt; color: #5b7083; line-height: 1.35; margin-top: 1.4mm; }
+.note b { color: #0b2545; }
+
+/* right column row 3: conclusion + references */
+.stack { display: flex; flex-direction: column; gap: 4mm; min-height: 0; }
+.stack .sec { flex: 1; }
+.refs ol { margin-left: 0; list-style: none; }
+.refs li { font-size: 6.5pt; margin-bottom: 0.9mm; color: #44586c; padding-left: 1mm; }
+.refs li::before { display: none; }
+.refs .n { color: #ff8c42; font-weight: 800; margin-right: 1mm; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ================= TITLE BAND ================= -->
+  <div class="band">
+    <div class="kicker">Technical Poster &nbsp;•&nbsp; Disaster Management &amp; Emergency Response Platform</div>
+    <h1>TREMOR<span>WATCH</span></h1>
+    <div class="subtitle">AI-Powered Seismic Risk Intelligence for Disaster Management &amp; Emergency Response</div>
+    <div class="meta">Poster Battle &nbsp;•&nbsp; 15 Sept 2026 &nbsp;•&nbsp; ACM Student Chapter, SVKM IOT Dhule</div>
+    <div class="team">Rehan Shaikh &nbsp;·&nbsp; Aman Ansari &nbsp;·&nbsp; Kamil Mirza</div>
+  </div>
+
+  <!-- ================= GRID ================= -->
+  <div class="grid">
+
+    <!-- Row 1 -->
+    <section class="sec">
+      <h2>Abstract</h2>
+      <p>TREMORWATCH turns the live USGS global feed into emergency-response intelligence. From
+      <b>11,143 events in 30 days</b> it validates the catalog against Gutenberg–Richter
+      (<b>b = 1.15</b>), maps 5°-grid risk zones where significant (M&nbsp;≥&nbsp;5.0) events
+      concentrate, and triages every newly detected event with a Random Forest model. Under strict
+      walk-forward cross-validation (<b>8,912 unseen future events, zero leakage</b>), flagged
+      events are <b>13.3× more likely</b> to be significant than a random alert, and the system
+      catches <b>79%</b> of significant events — faster, better-informed response.</p>
+    </section>
+
+    <section class="sec">
+      <h2>Process Diagram</h2>
+      <img src="IMG:process_diagram.png">
+    </section>
+
+    <section class="sec">
+      <h2>Objectives</h2>
+      <ul>
+        <li><b>Fast triage</b> — rank detected events by response priority in under one second</li>
+        <li><b>Risk zoning</b> — decide where to pre-position teams, caches and drills</li>
+        <li><b>Situational awareness</b> — one live picture of global seismic activity and severity</li>
+        <li><b>Trustworthy evaluation</b> — leak-free validation responders can rely on</li>
+      </ul>
+    </section>
+
+    <!-- Row 2 -->
+    <section class="sec">
+      <h2>Problem Statement</h2>
+      <p>Earthquakes cannot be predicted with certainty — but their <b>where</b> and
+      <b>likelihood</b> are strongly patterned, and response is won or lost in the first minutes.
+      When a significant event is detected, responders must answer immediately:
+      <b>how severe is it, which events deserve action, and where are we already prepared?</b></p>
+      <p style="margin-top:1.5mm">Without structured data intelligence, alert overload and guesswork
+      delay those answers. TREMORWATCH converts a public seismic stream into them — continuously,
+      at machine speed.</p>
+    </section>
+
+    <section class="sec">
+      <h2>Innovation</h2>
+      <ul>
+        <li>An <b>honest risk layer</b>, not a false "prediction" — posterior risk zones plus per-event ML triage</li>
+        <li><b>Walk-forward evaluation</b> on 8,912 unseen future events — zero leakage, the standard most posters skip</li>
+        <li>The model independently learned the <b>Ring of Fire</b> — location + depth carry ~90% of the signal</li>
+        <li><b>13.3× lift</b> over the 1.5% base rate, <b>79% catch</b> of significant events — misses shown on purpose</li>
+      </ul>
+    </section>
+
+    <section class="sec">
+      <h2>Methodology</h2>
+      <ul>
+        <li><b>Data</b> — USGS global feed (public GeoJSON, no API key); 13 Aug – 12 Sept 2026; 11,143 events</li>
+        <li><b>Validation</b> — Gutenberg–Richter fit b = 1.15 (expected ≈ 1.0); catalog health confirmed</li>
+        <li><b>Risk zones</b> — 5° grid; P(M ≥ 5.0); minimum 15 events per zone for stability</li>
+        <li><b>Model</b> — Random Forest, 300 trees, balanced classes; features known at detection: grid location, depth, hour, day</li>
+        <li><b>Evaluation</b> — 4 sequential hold-out windows; threshold 0.30; precision / recall / lift</li>
+      </ul>
+    </section>
+
+    <!-- Row 3 -->
+    <section class="sec">
+      <h2>Survey</h2>
+      <div class="chips">
+        <div class="chip"><div class="v">11,143</div><div class="l">earthquakes in 30 days</div></div>
+        <div class="chip"><div class="v">M 7.8</div><div class="l">largest — NNW of Ende, Indonesia</div></div>
+        <div class="chip"><div class="v">189</div><div class="l">significant M ≥ 5.0 (1.7%)</div></div>
+        <div class="chip"><div class="v">7</div><div class="l">tsunamis triggered</div></div>
+      </div>
+      <div class="duo">
+        <img src="IMG:mag_bands_light.png">
+        <img src="IMG:risk_zones_bars_light.png">
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Proposed Model</h2>
+      <img src="IMG:risk_map_light.png">
+      <div class="mstrip">
+        <div class="mt"><div class="v">13.3×</div><div class="l">Lift vs baseline</div></div>
+        <div class="mt"><div class="v">19.6%</div><div class="l">Precision</div></div>
+        <div class="mt"><div class="v">78.6%</div><div class="l">Recall</div></div>
+        <div class="mt"><div class="v">0.314</div><div class="l">F1 score</div></div>
+      </div>
+      <div class="note">Every detected event scored in <b>&lt; 1 s</b>; only top-confidence, in-risk-zone
+      events page on-call responders — cutting alert noise while catching <b>79%</b> of significant events.</div>
+    </section>
+
+    <div class="stack">
+      <section class="sec">
+        <h2>Conclusion</h2>
+        <p>Seismic response can be faster and smarter. Combining observed risk zones with leak-free
+        ML triage, TREMORWATCH turns a public data stream into actionable priorities — resources
+        pre-positioned where risk concentrates, responders paged only for events that matter. The
+        same <b>zone → triage → alert</b> architecture generalises to cyclones, floods and any
+        hazard with a live data feed.</p>
+      </section>
+      <section class="sec refs">
+        <h2>References</h2>
+        <ol>
+          <li><span class="n">1</span>USGS Earthquake Hazards Program — global earthquake feed (all_month GeoJSON), earthquake.usgs.gov</li>
+          <li><span class="n">2</span>Natural Earth — 110 m admin-0 country boundaries (public domain)</li>
+          <li><span class="n">3</span>Pedregosa, F. et al. (2011). Scikit-learn: Machine learning in Python. JMLR 12: 2825–2830</li>
+          <li><span class="n">4</span>Aki, K. (1965). ML estimate of b in log N = a − bM. Bull. Seismol. Soc. Am. 55(2): 73–87</li>
+        </ol>
+      </section>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
