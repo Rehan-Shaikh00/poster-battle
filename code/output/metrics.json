@@ -144,7 +144,7 @@
       "place": "57 km N of Ende, Indonesia",
       "mag": 4.8,
       "depth": 10.0,
-      "prob": 0.9678624096792405,
+      "prob": 0.9678624096792403,
       "flag": "ALERT",
       "actual_sig": "no"
     },
@@ -162,7 +162,7 @@
       "place": "South Sandwich Islands region",
       "mag": 5.0,
       "depth": 10.0,
-      "prob": 0.9460111983569647,
+      "prob": 0.9460111983569645,
       "flag": "ALERT",
       "actual_sig": "YES"
     },

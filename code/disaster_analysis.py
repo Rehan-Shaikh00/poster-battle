@@ -2,7 +2,15 @@
 #  TREMORWATCH — Disaster Management & Emergency Response Platform
 #  Technical Poster Battle  |  ACM Student Chapter, S V K M's IOT Dhule
 #
-#  Run:   python disaster_analysis.py
+#  Run:   python disaster_analysis.py            (default, recommended)
+#          -> Pinned analysis window 13 Aug - 12 Sep 2026 (poster-reproducible)
+#          -> uses the local cache file; downloads it only if missing
+#  Run:   python disaster_analysis.py --live
+#          -> TODAY'S real numbers: fetches the CURRENT rolling 30-day feed
+#          -> writes to output_live/ (the official output/ is left untouched)
+#  Run:   python disaster_analysis.py --offline
+#          -> never touches the network; cached files only
+#
 #  Deps:  pip install pandas numpy matplotlib scikit-learn requests
 #          (optional) pip install plotly   -> adds an interactive map
 # ----------------------------------------------------------------------------
@@ -27,7 +35,7 @@
 #   5. Saves every chart to output/*.png, all numbers to output/metrics.json,
 #      and prints a clean summary you can lift straight into the poster.
 # ============================================================================
-import json, os, warnings
+import json, os, sys, warnings, argparse
 import numpy as np
 import pandas as pd
 import requests
@@ -45,12 +53,30 @@ warnings.filterwarnings("ignore")
 # 0.  Paths, style, sources
 # ----------------------------------------------------------------------------
 BASE = os.path.dirname(os.path.abspath(__file__))
-OUT  = os.path.join(BASE, "output")
-os.makedirs(OUT, exist_ok=True)
 
-FEED  = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+# Two data sources:
+#  - FEED_LIVE   : the CURRENT rolling "last 30 days" feed. Numbers change
+#                  every day; this is what a truly live run uses.
+#  - FEED_WINDOW : the EXACT 30-day window (13 Aug - 12 Sep 2026) that the
+#                  poster was built from, via the FDSN query API. Fetching
+#                  this gives reproducible, poster-matching numbers.
+FEED_LIVE   = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+FEED_WINDOW = ("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson"
+               "&starttime=2026-08-13&endtime=2026-09-12")
 WORLD = ("https://raw.githubusercontent.com/nvkelso/natural-earth-vector/"
          "master/geojson/ne_110m_admin_0_countries.geojson")
+
+_ap = argparse.ArgumentParser(description="TREMORWATCH seismic risk analysis")
+_ap.add_argument("--live", action="store_true",
+                 help="fetch the CURRENT rolling 30-day feed (today's real numbers); "
+                      "writes to output_live/ so the official output/ stays untouched")
+_ap.add_argument("--offline", action="store_true",
+                 help="never touch the network; use cached files only")
+ARGS = _ap.parse_args()
+
+# Output dir: --live keeps the official numbers safe in their own folder.
+OUT = os.path.join(BASE, "output_live" if ARGS.live else "output")
+os.makedirs(OUT, exist_ok=True)
 
 BG, PANEL, GRID, TXT = "#0d1b2a", "#10243e", "#1e3a5f", "#e0e6ed"
 C_ORANGE, C_CYAN, C_YELLOW, C_RED, C_GREEN = "#ff8c42", "#4cc9f0", "#ffd166", "#ef476f", "#06d6a0"
@@ -64,13 +90,39 @@ plt.rcParams.update({
     "savefig.facecolor": BG, "savefig.dpi": DPI,
 })
 
-def fetch(url, fname):
+def fetch(url, fname, use_cache=True, offline=False):
+    """Locate a data file.
+
+    use_cache=True  -> use the local copy if it exists (reproducible runs);
+                       otherwise download.
+    use_cache=False -> always re-download fresh (live runs).
+    offline=True    -> never touch the network; cached file is mandatory.
+
+    If a download fails but a local copy exists, fall back to it with a
+    warning (so the script also works at venues with no internet).
+    """
     path = os.path.join(BASE, fname)
-    if not os.path.exists(path):
-        print(f"  downloading {fname} ...")
+    if use_cache and os.path.exists(path):
+        return path
+    if offline:
+        if os.path.exists(path):
+            print(f"  (offline: using cached {fname})")
+            return path
+        raise SystemExit(f"  --offline but no local copy of {fname} exists; "
+                         "run once with internet to create the cache.")
+    print(f"  downloading {fname} ...")
+    try:
         r = requests.get(url, timeout=120)
         r.raise_for_status()
         open(path, "wb").write(r.content)
+    except Exception as e:
+        if os.path.exists(path):
+            print(f"  (network unavailable: {e.__class__.__name__} — "
+                  f"falling back to cached {fname})")
+            return path
+        raise SystemExit(f"  Could not download {fname} ({e.__class__.__name__}) "
+                         "and no local cache exists. Connect to the internet "
+                         "and run once, or copy the file into the project folder.")
     return path
 
 def style_ax(ax, title, xlabel="", ylabel=""):
@@ -88,8 +140,16 @@ def region_label(place_series):
 # ----------------------------------------------------------------------------
 # 1.  Load + parse the live USGS feed
 # ----------------------------------------------------------------------------
-print("[1/6] Loading live USGS earthquake feed (last 30 days, worldwide) ...")
-gj = json.load(open(fetch(FEED, "usgs_all_month.geojson"), encoding="utf-8"))
+if ARGS.live:
+    print("[1/6] Loading LIVE USGS feed — CURRENT rolling last 30 days "
+          "(today's real numbers) ...")
+    _url, _cache, _use_cache = FEED_LIVE, "usgs_live_month.geojson", not ARGS.offline
+else:
+    print("[1/6] Loading USGS feed — pinned window 13 Aug - 12 Sep 2026 "
+          "(the exact window the poster was built from) ...")
+    _url, _cache, _use_cache = FEED_WINDOW, "usgs_all_month.geojson", True
+gj = json.load(open(fetch(_url, _cache, use_cache=_use_cache,
+                          offline=ARGS.offline), encoding="utf-8"))
 rows = []
 for f in gj["features"]:
     p, g = f["properties"], f["geometry"]["coordinates"]   # g = [lon, lat, depth]
@@ -348,7 +408,7 @@ print(f"   precision {prec:.3f}  |  recall {rec:.3f}  |  F1 {f1:.3f}  |  LIFT {l
 print(f"   -> flagged events are {lift:.0f}x more likely to be significant")
 print(f"   -> model catches {rec*100:.0f}% of significant events in the future")
 print("=" * 64)
-print("Charts in:  output/*.png   (risk_map.png is the headline)")
+print(f"Charts in:  {os.path.relpath(OUT, BASE)}/*.png   (risk_map.png is the headline)")
 
 # ----------------------------------------------------------------------------
 # 6.  OPTIONAL interactive map (browser) - needs: pip install plotly

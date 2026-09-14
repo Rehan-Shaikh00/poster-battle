@@ -162,3 +162,39 @@ Numbers in **bold** are the ones to memorize. Point at the matching poster secti
 - [ ] Rehearse the full 10 minutes **twice with a stopwatch** before the event
 - [ ] Agree on transitions + who leads Q&A (Speaker C) and the handoff rule ("Speaker B, the model?")
 - [ ] Reach the venue so you're registered and seated before **10:30 a.m. sharp** — the competition starts on time
+
+---
+
+## 6. Data modes & the "45,000 earthquakes" question (added 14 Sept)
+
+**Our two run modes (code/disaster_analysis.py):**
+- **Default (use this in the competition):** pinned window **13 Aug – 12 Sep 2026** —
+  the exact window the poster was built from. Works offline from the cached file;
+  numbers match the poster **exactly**.
+- **`python disaster_analysis.py --live`:** fetches the **CURRENT rolling 30-day
+  feed from USGS right now** — today's real numbers — and writes them to
+  `output_live/` (the official `output/` stays untouched).
+- **`--offline`:** never touches the network (fallback if venue Wi-Fi dies).
+
+**Live run of 14 Sept 2026 (same pipeline, today's data):**
+10,934 events (15 Aug – 14 Sep) · 169 significant · b = 1.15 ·
+precision 18.6% · recall 76.3% · F1 0.299 · **lift 13.8×**.
+→ The story holds on fresh data; only the window moved.
+
+**Q19. "The real world has ~45,000 earthquakes a month — why do you only have 11,143?"**
+"The 45,000/month figure (USGS estimates ~500,000 *detectable* quakes per year)
+counts almost entirely micro-quakes below M2.5 — most are recorded only by dense
+regional networks and never enter the USGS global catalog. Our feed is complete
+for the scale we care about: **every** M5.0+ quake worldwide in our window is in
+the data — all 189 of them, plus all 7 tsunamis. The missing ~30,000 are the tiny
+quakes that never trigger an emergency response; adding them would only add noise
+to the 98% majority class."
+
+**Q20. "Why don't you just run it on today's live data — aren't the poster numbers stale?"**
+"The poster uses a *pinned* 30-day window (13 Aug – 12 Sep) so the result is
+reproducible — that's good data-science practice. The same script has a `--live`
+mode that pulls the current USGS feed and re-runs everything in under a minute.
+Today's live run gives 10,934 events and a 13.8× lift — essentially the same
+story. The numbers move because the catalog moves: USGS adds late arrivals and
+revises magnitudes continuously. In production the system would simply re-score
+every new event as it arrives."

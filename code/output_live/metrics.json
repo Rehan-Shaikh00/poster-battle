@@ -1,0 +1,215 @@
+{
+  "n_total": 10934,
+  "n_used": 10934,
+  "date_min": "15 Aug 2026",
+  "date_max": "14 Sep 2026",
+  "max_mag": 6.9,
+  "max_ev": "9 km WNW of Pematangsiantar, Indonesia",
+  "n_ge55": 42,
+  "n_ge60": 10,
+  "n_tsum": 7,
+  "b_value": 1.15,
+  "top_regions": [
+    {
+      "region": "Alaska",
+      "events": 3154
+    },
+    {
+      "region": "Utah",
+      "events": 718
+    },
+    {
+      "region": "Texas",
+      "events": 623
+    },
+    {
+      "region": "Hawaii",
+      "events": 449
+    },
+    {
+      "region": "Indonesia",
+      "events": 353
+    },
+    {
+      "region": "Washington",
+      "events": 294
+    }
+  ],
+  "depth_tab": [
+    {
+      "band": "Shallow (<70 km)",
+      "events": 9770,
+      "mean_mag": 1.6,
+      "max_mag": 6.3
+    },
+    {
+      "band": "Intermediate (70-300 km)",
+      "events": 730,
+      "mean_mag": 2.82,
+      "max_mag": 6.9
+    },
+    {
+      "band": "Deep (>300 km)",
+      "events": 56,
+      "mean_mag": 4.51,
+      "max_mag": 6.5
+    }
+  ],
+  "significant_threshold": 5.0,
+  "threshold": 0.3,
+  "model": {
+    "test_n": 8744,
+    "test_pos": 118,
+    "baseline": 0.0135,
+    "precision": 0.186,
+    "recall": 0.763,
+    "f1": 0.299,
+    "lift": 13.8,
+    "importance": [
+      {
+        "feature": "c_lon",
+        "importance": 0.446
+      },
+      {
+        "feature": "c_lat",
+        "importance": 0.307
+      },
+      {
+        "feature": "depth",
+        "importance": 0.164
+      },
+      {
+        "feature": "hour",
+        "importance": 0.052
+      },
+      {
+        "feature": "dow",
+        "importance": 0.03
+      }
+    ]
+  },
+  "risk_zones": [
+    {
+      "zone": "Timor Leste",
+      "lat": "10 to 15 S",
+      "lon": "125 deg",
+      "events": 15,
+      "significant": 5,
+      "p_posterior": 0.333
+    },
+    {
+      "zone": "Philippines",
+      "lat": "5 to 10 N",
+      "lon": "125 deg",
+      "events": 23,
+      "significant": 5,
+      "p_posterior": 0.217
+    },
+    {
+      "zone": "Mexico",
+      "lat": "10 to 15 N",
+      "lon": "-95 deg",
+      "events": 27,
+      "significant": 4,
+      "p_posterior": 0.148
+    },
+    {
+      "zone": "Indonesia",
+      "lat": "10 to 15 S",
+      "lon": "120 deg",
+      "events": 273,
+      "significant": 36,
+      "p_posterior": 0.132
+    },
+    {
+      "zone": "Fiji",
+      "lat": "20 to 25 S",
+      "lon": "-180 deg",
+      "events": 18,
+      "significant": 2,
+      "p_posterior": 0.111
+    },
+    {
+      "zone": "Vanuatu",
+      "lat": "15 to 20 S",
+      "lon": "165 deg",
+      "events": 15,
+      "significant": 1,
+      "p_posterior": 0.067
+    }
+  ],
+  "top_alerts": [
+    {
+      "time": "04 Sep 06:45",
+      "place": "South Sandwich Islands region",
+      "mag": 5.0,
+      "depth": 10.0,
+      "prob": 0.9738149125405359,
+      "flag": "ALERT",
+      "actual_sig": "YES"
+    },
+    {
+      "time": "21 Aug 18:22",
+      "place": "40 km NNE of Labuan Bajo, Indonesia",
+      "mag": 4.2,
+      "depth": 10.0,
+      "prob": 0.9685638355109476,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "21 Aug 08:14",
+      "place": "86 km N of Ruteng, Indonesia",
+      "mag": 4.9,
+      "depth": 35.067,
+      "prob": 0.9482824434835734,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "27 Aug 19:54",
+      "place": "69 km NE of Kuji, Japan",
+      "mag": 4.8,
+      "depth": 58.569,
+      "prob": 0.9445508365863554,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "08 Sep 15:43",
+      "place": "53 km ESE of Hihifo, Tonga",
+      "mag": 4.9,
+      "depth": 10.0,
+      "prob": 0.9395891118888647,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "03 Sep 05:10",
+      "place": "South Sandwich Islands region",
+      "mag": 4.5,
+      "depth": 10.0,
+      "prob": 0.9390513026221263,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "20 Aug 23:01",
+      "place": "56 km NNE of Labuan Bajo, Indonesia",
+      "mag": 4.4,
+      "depth": 10.0,
+      "prob": 0.9366433856744192,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    },
+    {
+      "time": "11 Sep 05:44",
+      "place": "102 km SW of Brisas Barra de Suchiate, Mexico",
+      "mag": 4.2,
+      "depth": 10.0,
+      "prob": 0.9357472278684182,
+      "flag": "ALERT",
+      "actual_sig": "no"
+    }
+  ]
+}
